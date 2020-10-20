@@ -11,8 +11,9 @@ class AgentsController < ApplicationController
 
     @res = verify_required_params(:agent, required_params)
     # @res[:ic_image]
-    byebug
     unless @res == true
+      @res += ", ic_image" unless params[:user][:ic_image].present?
+      @res += ", agent_id_image" unless params[:user][:agent_id_image].present?
       respond_to do |format|
         format.html { render :new }
         format.js # call create.js.erb on save errors
@@ -21,13 +22,24 @@ class AgentsController < ApplicationController
     else
       agent_params = {}
       required_params.map{ |p| agent_params[p] = params[:agent][p] if params[:agent][p].present? }
-      agent_params[:ic_image] = params[:agent][:ic_image] if params[:agent][:ic_image].present?
-      agent_params[:agent_id_image] = params[:agent][:agent_id_image] if params[:agent][:agent_id_image].present?
 
       @agent = Agent.new(agent_params)
       @res = nil
       respond_to do |format|
         if @agent.save
+
+          image = Image.new
+          image.source = @agent
+          image.name = params[:agent][:ic_image]
+          image.remark = "ic_image"
+          image.save!
+
+          id_image = Image.new
+          id_image.source = @agent
+          id_image.name = params[:agent][:agent_id_image]
+          id_image.remark = "agent_id_image"
+          id_image.save!
+
           format.html
           format.js
         else

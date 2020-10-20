@@ -3,5 +3,5 @@ class User < ApplicationRecord
   validates :phone_number, uniqueness: true
   validates :nric, uniqueness: true
   validates :email, uniqueness: true
-  mount_uploader :ic_image, ImageUploader
+  has_one :image, as: :source
 end
