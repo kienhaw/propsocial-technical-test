@@ -1,0 +1,4 @@
+$('#user-err-msg').addClass("d-none");
+$('#agent-err-msg').addClass("d-none");
+$('#<%= @error[:type] %>-err-msg').removeClass("d-none");
+$('#<%= @error[:type] %>-err-msg').html("<%= @error[:message] %>");

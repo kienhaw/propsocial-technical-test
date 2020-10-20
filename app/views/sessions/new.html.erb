@@ -1,8 +1,57 @@
-<h1>Login</h1>
-   <%= form_tag '/login' do %>
-   <%= label_tag :username%>
-   <%= text_field_tag :username %>
-   <%= label_tag :password%>
-   <%= password_field_tag :password%>
-   <%= submit_tag "Login"%>
-<%end%>
+<div class="col-md-6 m-auto">
+
+  <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">User</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="agent-tab" data-toggle="tab" href="#agent" role="tab" aria-controls="agent" aria-selected="false">Agent</a>
+    </li>
+  </ul>
+
+  <div class="tab-content mt-3" id="myTabContent">
+    <div class="tab-pane fade show active" id="user" role="tabpanel" aria-labelledby="home-tab">
+      <div class="w-50 m-auto">
+        <h3>User Login</h3>
+        <p id="user-err-msg" class="d-none alert alert-danger"></p>
+        <%= form_tag '/login', remote: true do %>
+        <p>
+          <%= label_tag :email%>
+          <%= text_field_tag :email, "", :class => "form-control", required: true %>
+        </p>
+          <p>
+            <%= label_tag :password%>
+            <%= password_field_tag :password, "", :class => "form-control", required: true%>
+          </p>
+          <p>
+            <%= text_field_tag :type, "user", :class => "d-none" %>
+            <%= submit_tag "Login", :class => "form-control mt-3 btn-success"%>
+          </p>
+        <%end %>
+        <%= button_to "User Sign Up", '/users/new', :class => "form-control mt-3 btn-dark", method: :get%>
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="agent" role="tabpanel" aria-labelledby="agent-tab">
+      <div class="w-50 m-auto">
+        <h3>Agent Login</h3>
+        <p id="agent-err-msg" class="d-none alert alert-danger"></p>
+        <%= form_tag '/login', remote: true do %>
+        <p>
+          <%= label_tag :email%>
+          <%= text_field_tag :email, "", :class => "form-control", required: true%>
+        </p>
+          <p>
+            <%= label_tag :password%>
+            <%= password_field_tag :password, "", :class => "form-control", required: true%>
+          </p>
+          <p>
+            <%= text_field_tag :type, "agent", :class => "d-none" %>
+            <%= submit_tag "Login", :class => "form-control mt-3 btn-success"%>
+          </p>
+        <%end %>
+        <%= button_to "Agent Sign Up", '/agents/new', :class => "form-control mt-3 btn-dark", method: :get%>
+      </div>
+    </div>
+  </div>
+</div>
