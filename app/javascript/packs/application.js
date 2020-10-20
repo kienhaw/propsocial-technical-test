@@ -3,10 +3,24 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import 'bootstrap'
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("packs/custom")
+
+import flatpickr from 'flatpickr'
+require("flatpickr/dist/flatpickr.css")
+
+document.addEventListener("turbolinks:load", () => {
+  flatpickr("[data-behaviour='flatpickr']", {
+    altInput: true,
+    dateFormat: 'Y-m-d'
+  })
+})
+
+global.$ = require('jquery')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
