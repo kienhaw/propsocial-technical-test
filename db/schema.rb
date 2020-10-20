@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_145313) do
+ActiveRecord::Schema.define(version: 2020_10_20_153913) do
 
   create_table "agents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_145313) do
     t.date "dob"
     t.string "phone_number"
     t.string "nric"
-    t.string "ic_image"
-    t.string "agent_id_image"
     t.string "ren_no"
     t.string "agency_name"
     t.datetime "created_at", precision: 6, null: false
@@ -44,7 +42,6 @@ ActiveRecord::Schema.define(version: 2020_10_20_145313) do
     t.date "dob"
     t.string "phone_number"
     t.string "nric"
-    t.string "ic_image"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
