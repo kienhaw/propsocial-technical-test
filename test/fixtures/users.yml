@@ -3,19 +3,19 @@
 one:
   first_name: MyString
   last_name: MyString
-  dob: 2020-10-19
+  dob: 2020-10-20
   phone_number: MyString
   nric: MyString
   ic_image: MyString
   email: MyString
-  digest_password: MyString
+  password_digest: MyString
 
 two:
   first_name: MyString
   last_name: MyString
-  dob: 2020-10-19
+  dob: 2020-10-20
   phone_number: MyString
   nric: MyString
   ic_image: MyString
   email: MyString
-  digest_password: MyString
+  password_digest: MyString
