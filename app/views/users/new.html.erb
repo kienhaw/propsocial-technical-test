@@ -1,8 +1,52 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f|%>
-  <%= f.label :username%><br>
-  <%= f.text_field :username%><br>
-  <%= f.label :password%><br>
-  <%= f.password_field :password%><br>
-  <%= f.submit %>
-<%end%>
+
+<div class="col-md-6 m-auto">
+  <h1 class="text-center">User Sign Up</h1>
+  <hr>
+  <i>(*) Indicates mandatory field</i>
+
+  <div class="mt-3">
+
+    <%= form_for @user, remote: true do |f|%>
+      * <%= f.label :email%>
+      <%= f.text_field :email, :class => 'form-control', required: true%>
+      <p class="text-danger d-none" id="email-error"></p>
+
+      * <%= f.label :first_name, :class => "mt-3"%>
+      <%= f.text_field :first_name, :class => 'form-control'%>
+      <p class="text-danger d-none" id="first_name-error"></p>
+
+      * <%= f.label :last_name, :class => "mt-3"%>
+      <%= f.text_field :last_name, :class => 'form-control'%>
+      <p class="text-danger d-none" id="last_name-error"></p>
+
+      * <%= f.label :date_of_birth, :class => "mt-3"%>
+      <%= f.text_field :dob, data: {behaviour: "flatpickr"} %>
+      <p class="text-danger d-none" id="dob-error"></p>
+
+      * <%= f.label :phone_number, :class => "mt-3"%>
+      <%= f.text_field :phone_number, :class => 'form-control'%>
+      <p class="text-danger d-none" id="phone_number-error"></p>
+
+      * <%= f.label :nric, :class => "mt-3"%>
+      <%= f.text_field :nric, :class => 'form-control'%>
+      <p class="text-danger d-none" id="nric-error"></p>
+
+      * <%= f.label :ic_image, :class => "mt-3"%>
+      <br>
+      <%= f.file_field :ic_image, multiple: false %>
+      <p class="text-danger d-none" id="ic_image-error"></p>
+
+      <br>
+      * <%= f.label :password, :class => "mt-3"%>
+      <%= f.password_field :password, :class => 'form-control', required: true%>
+      <p class="text-danger d-none" id="password-error"></p>
+
+      <%= f.submit 'Create User', :class => 'form-control btn-success mt-3' %>
+    <%end%>
+  </div>
+
+  <div class="my-3">
+    <%= button_to "Back To Login", '/login', method: :get, :class => "form-control"%>
+  </div>
+
+</div>

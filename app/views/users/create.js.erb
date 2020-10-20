@@ -1,0 +1,16 @@
+$('p').addClass('d-none');
+<% if @user.present? && @user.errors.any? %>
+  // alert("ERROR(S): <%= j @user.errors.messages %>")
+  <% @user.errors.messages.each do |key, value| %>
+    $("#<%= key %>-error").removeClass("d-none");
+    $("#<%= key %>-error").html("<%= key %>  <%= value[0] %>");
+  <% end %>
+<% elsif @res.present? %>
+  <% @res.split(": ")[1].split(", ").each do |errKey| %>
+    $("#<%= errKey %>-error").removeClass("d-none");
+    $("#<%= errKey %>-error").html("<%= errKey %> is required, cannot be blank!");
+  <% end %>
+<% else %>
+  alert("User created");
+  $(window.location.replace("/login"))
+<% end %>
