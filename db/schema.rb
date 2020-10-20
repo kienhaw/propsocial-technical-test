@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_132609) do
+ActiveRecord::Schema.define(version: 2020_10_20_063925) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_10_19_132609) do
     t.string "nric"
     t.string "ic_image"
     t.string "email"
-    t.string "digest_password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
