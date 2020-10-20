@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       required_params.map{ |p| user_params[p] = params[:user][p] if params[:user][p].present? }
 
       @user = User.new(user_params)
-
+      @res = nil
       respond_to do |format|
         if @user.save
           format.html
