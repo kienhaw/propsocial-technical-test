@@ -1,6 +1,11 @@
-<div class="col-6">
-  <h1>Ads Listing</h1>
-  <%= @ads.count %> result(s)
+<div class="col-12 mt-3">
+  <h1 class="text-center">Ads Listing</h1>
+  <div class="d-flex justify-content-between">
+    <span>
+      <%= @ads.count %> result(s)
+    </span>
+    <%= link_to "+ New ad listing", new_ad_path, :class => "btn btn-dark" %>
+  </div>
 
   <table class="table table-hover table-striped table-sm mt-3">
     <thead>
@@ -25,5 +30,4 @@
   </table>
   <br>
 
-  <%= link_to "New ad listing", new_ad_path, :class => "btn btn-light form-control" %>
 </div>
