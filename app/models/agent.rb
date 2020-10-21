@@ -7,5 +7,6 @@ class Agent < ApplicationRecord
   has_many :images, as: :source
   has_many :ads, as: :source
   has_many :notifications, as: :source
-  
+  has_many :inquiries, as: :source
+
 end

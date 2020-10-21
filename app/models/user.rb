@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :image, as: :source
   has_many :ads, as: :source
   has_many :notifications, as: :source
+  has_many :inquiries, as: :source
 end
