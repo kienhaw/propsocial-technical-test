@@ -1,0 +1,40 @@
+<div class="col-12 mt-3">
+  <h1 class="text-center">Inquiries Listing</h1>
+  <div class="d-flex justify-content-between">
+    <span>
+      <%= @inquiries.count %> result(s)
+    </span>
+  </div>
+
+  <table class="table table-hover table-striped table-sm mt-3">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Property Name</th>
+        <th>Price</th>
+        <th>Ad Listing Type</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @inquiries.each_with_index do |inq, index| %>
+        <tr>
+          <td><%= index + 1 %>.</td>
+          <td><%= inq.contact %></td>
+          <td><%= inq.email %></td>
+          <td><%= inq.name %></td>
+          <td><%= inq.ad.property_name %></td>
+          <td><%= inq.ad.price %></td>
+          <td><%= inq.ad.ad_type %></td>
+          <td><%= link_to "Show", inq %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+</div>
