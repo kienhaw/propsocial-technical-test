@@ -1,11 +1,11 @@
 class AdsController < ApplicationController
 
   def index
-    @ads = current_user.ads
+    @ads = Ad.all
   end
 
   def new
-    @ad = Ad.new
+    @ad = current_user.ads.new
   end
 
   def create
@@ -23,9 +23,8 @@ class AdsController < ApplicationController
     else
       ad_params = {}
       required_params.map{ |p| ad_params[p] = params[:ad][p] if params[:ad][p].present? }
-      ad_params[:source] = current_user
 
-      @ad = Ad.new(ad_params)
+      @ad = current_user.ads.new(ad_params)
 
       @res = nil
       respond_to do |format|
@@ -51,6 +50,6 @@ class AdsController < ApplicationController
   end
 
   def show
-    @ad = current_user.ads.find(params[:id])
+    @ad = Ad.find(params[:id])
   end
 end
