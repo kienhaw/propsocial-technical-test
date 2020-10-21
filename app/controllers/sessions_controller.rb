@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email]) if params[:type] == "user"
-    # @user = Agent.find_by(email: params[:email]) if params[:type] == "agent"
+    @user = Agent.find_by(email: params[:email]) if params[:type] == "agent"
     if @user && @user.authenticate(params[:password])
        session[:user_id] = @user.id if params[:type] == "user"
-       # session[:agent_id] = @user.id if params[:type] == "agent"
+       session[:agent_id] = @user.id if params[:type] == "agent"
        session[:login_type] = params[:type]
        redirect_to '/ads'
     else
-      @error = {message: "Failed to login, invalid credentials", type: "user"}
+      @error = {message: "Failed to login, invalid credentials", type: params[:type]}
       respond_to do |format|
         format.html { render :new }
         format.js # call login.js.erb on save errors

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     if session[:login_type] == "user"
       User.find_by(id: session[:user_id])
     else
-      Agent.find_by(id: session[:user_id])
+      Agent.find_by(id: session[:agent_id])
     end
   end
 
