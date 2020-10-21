@@ -24,11 +24,18 @@ class ApplicationController < ActionController::Base
    redirect_to '/login' unless logged_in?
   end
 
-  def verify_required_params(model_type, required_params = [])
+  def verify_required_params(model_type = nil, required_params = [])
     missing_params = []
-    required_params.each do |req|
-      next if params[model_type][req] == true || params[model_type][req] == false # handle param value is boolean
-      missing_params.push(req) unless params[model_type][req].present?
+    if model_type == nil
+      required_params.each do |req|
+        next if params[req] == true || params[req] == false # handle param value is boolean
+        missing_params.push(req) unless params[req].present?
+      end
+    else
+      required_params.each do |req|
+        next if params[model_type][req] == true || params[model_type][req] == false # handle param value is boolean
+        missing_params.push(req) unless params[model_type][req].present?
+      end
     end
 
     return "Missing required parameter(s): #{missing_params.join(', ')}" if missing_params.present?
