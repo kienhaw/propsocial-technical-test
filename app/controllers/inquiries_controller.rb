@@ -1,6 +1,11 @@
 class InquiriesController < ApplicationController
+
+  def index
+    @inquiries = current_user.inquiries
+  end
+
   def new
-    @inquiry = Inquiry.new
+    @inquiry = current_user.inquiries.new
   end
 
   def create
@@ -20,9 +25,8 @@ class InquiriesController < ApplicationController
     else
       inquiry_params = {}
       required_params.map{ |p| inquiry_params[p] = params[p] if params[p].present? }
-      inquiry_params[:source] = current_user
 
-      @inquiry = Inquiry.new(inquiry_params)
+      @inquiry = current_user.inquiries.new(inquiry_params)
       @res = nil
       respond_to do |format|
         if @inquiry.save
