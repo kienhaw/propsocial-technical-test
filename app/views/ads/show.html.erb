@@ -9,7 +9,9 @@
       <% end %>
       <dl class="row mt-3">
         <dt class="col-sm-4 text-right">Created At :</dt>
-        <dd class="col-sm-8"><%= @ad.created_at.strftime("%d/%m/%Y") %></dd>
+        <dd class="col-sm-8"><%= @ad.created_at.strftime("%d/%m/%Y %I:%M%p") %></dd>
+        <dt class="col-sm-4 text-right">Created By :</dt>
+        <dd class="col-sm-8"><%= @ad.source.first_name %> <%= @ad.source.last_name %></dd>
         <dt class="col-sm-4 text-right">Property Name :</dt>
         <dd class="col-sm-8"><%= @ad.property_name %></dd>
         <dt class="col-sm-4 text-right">Price :</dt>
@@ -31,7 +33,7 @@
 
 </div>
 
-<% if current_role == "user" && !flash[:success] %>
+<% if current_role == "user" && !flash[:success] && current_user != @ad.source %>
   <%= javascript_pack_tag 'ads_show' %>
 <% end %>
 
