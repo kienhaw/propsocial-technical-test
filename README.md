@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Getting Started
+Install Rails at the command prompt if you haven't yet:
 
-Things you may want to cover:
+$ gem install rails
+At the command prompt, create a new Rails application:
 
-* Ruby version
+$ git clone
 
-* System dependencies
+Change directory to cloned app and start the web server and run bundle install:
 
-* Configuration
+ $ cd cloned_app
+ $ bundle install
+ $ rails server
+Run with --help or -h for options.
 
-* Database creation
+Go to http://localhost:3000 and you'll see login page
 
-* Database initialization
+List all your suggestions about how we can be improve the web app that is not mentioned above:
+1. It's advisable to use gem 'doorkeeper' and 'devise' for better security and minimal effort to setup.
 
-* How to run the test suite
+- Devise handles confirmation emails (confirmable) and password reset (recoverable) system for you so use their system, it is just options to activate
+- Doorkeeper is an implementation of a combined solution ’authentication/resource server’.
+- Rails API with a nice User management via devise gem, with both frontend forms and JSON access, and with a token-based OAuth authentication via doorkeeper.
 
-* Services (job queues, cache servers, search engines, etc.)
+2. It is also advisable to use active storage as image upload
 
-* Deployment instructions
-
-* ...
+- Active Storage makes it simple to upload and reference files in cloud services like Amazon S3, Google Cloud Storage, or Microsoft Azure Storage, and attach those files to Active Records.
+- It is a built in function without extra dependencies
+- No need for migrations, ActiveStorage by default provides all that is required to store file information
