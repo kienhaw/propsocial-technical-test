@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#login'
   get 'logout', to: 'sessions#logout'
   # get 'welcome', to: 'sessions#welcome'
+  root 'sessions#new'
 end
