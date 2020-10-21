@@ -1,5 +1,4 @@
 class AdsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
 
   def index
     @ads = current_user.ads
