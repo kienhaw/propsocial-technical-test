@@ -6,4 +6,6 @@ class Agent < ApplicationRecord
   validates :ren_no, uniqueness: true
   has_many :images, as: :source
   has_many :ads, as: :source
+  has_many :notifications, as: :source
+  
 end

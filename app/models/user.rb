@@ -5,4 +5,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_one :image, as: :source
   has_many :ads, as: :source
+  has_many :notifications, as: :source
 end
