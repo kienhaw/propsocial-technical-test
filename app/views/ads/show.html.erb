@@ -1,6 +1,72 @@
 <div class="col-md-6 m-auto">
-  <% @ad.images.each do |img| %>
-    <img src="<%= img.name.url %>" alt="" class="w-50">
+  <div class="card mt-3">
+    <div class="card-header">
+      Ad Listing Detail
+    </div>
+    <div class="card-body">
+      <% @ad.images.each do |img| %>
+        <img src="<%= img.name.url %>" alt="" width="100px">
+      <% end %>
+      <dl class="row mt-3">
+        <dt class="col-sm-4 text-right">Created At :</dt>
+        <dd class="col-sm-8"><%= @ad.created_at.strftime("%d/%m/%Y") %></dd>
+        <dt class="col-sm-4 text-right">Property Name :</dt>
+        <dd class="col-sm-8"><%= @ad.property_name %></dd>
+        <dt class="col-sm-4 text-right">Price :</dt>
+        <dd class="col-sm-8">RM <%= @ad.price %></dd>
+        <dt class="col-sm-4 text-right">Ad Listing Type :</dt>
+        <dd class="col-sm-8"><%= @ad.ad_type %></dd>
+      </dl>
+    </div>
+    <div class="card-footer">
+      <%= link_to "Back", ads_path, :class => "btn btn-light form-control" %>
+    </div>
+  </div>
+
+  <button data-toggle="modal" data-target="#modal-lead" class="d-none" id="openModal"></button>
+
+  <% if flash[:success] %>
+    <div class="alert alert-success mt-3"><%= flash[:success] %></div>
   <% end %>
 
+</div>
+
+<% if current_role == "user" && !flash[:success] %>
+  <%= javascript_pack_tag 'ads_show' %>
+<% end %>
+
+<div id="modal-lead" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Inquiry</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-12 form-group form-group-custom">
+              <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>"><%= value %></div>
+              <% end %>
+              <%= form_with(url: "/inquiries", method: "post") do %>
+                <%= label_tag(:email, "Email") %>
+                <%= text_field_tag(:email, "", class: 'form-control') %>
+
+                <%= label_tag(:name, "Name") %>
+                <%= text_field_tag(:name, "", class: 'form-control') %>
+
+                <%= label_tag(:contact, "Contact") %>
+                <%= text_field_tag(:contact, "", class: 'form-control') %>
+
+                <%= text_field_tag(:ad_id, @ad.id, class: 'form-control d-none') %>
+
+                <%= submit_tag("Submit", class: 'form-control btn-success mt-3') %>
+              <%end%>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
