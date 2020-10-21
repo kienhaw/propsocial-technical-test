@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_153913) do
+ActiveRecord::Schema.define(version: 2020_10_20_154844) do
+
+  create_table "ads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "property_name"
+    t.decimal "price", precision: 10
+    t.string "ad_type"
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_type", "source_id"], name: "index_ads_on_source_type_and_source_id"
+  end
 
   create_table "agents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
