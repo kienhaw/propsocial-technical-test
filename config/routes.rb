@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :ads
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#login'
+  get 'logout', to: 'sessions#logout'
   # get 'welcome', to: 'sessions#welcome'
 end
