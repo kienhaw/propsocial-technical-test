@@ -10,6 +10,8 @@
   <table class="table table-hover table-striped table-sm mt-3">
     <thead>
       <tr>
+        <th>Created At</th>
+        <th>Created By</th>
         <th>Property Name</th>
         <th>Price</th>
         <th>Ad Listing Type</th>
@@ -20,6 +22,8 @@
     <tbody>
       <% @ads.each do |ad| %>
         <tr>
+          <td><%= ad.created_at.strftime("%d/%m/%Y %I:%M%p") %></td>
+          <td><%= ad.source.first_name %> <%= ad.source.last_name %></td>
           <td><%= ad.property_name %></td>
           <td><%= ad.price %></td>
           <td><%= ad.ad_type %></td>
