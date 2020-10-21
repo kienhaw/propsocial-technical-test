@@ -1,0 +1,29 @@
+<div class="col-6">
+  <h1>Ads Listing</h1>
+  <%= @ads.count %> result(s)
+
+  <table class="table table-hover table-striped table-sm mt-3">
+    <thead>
+      <tr>
+        <th>Property Name</th>
+        <th>Price</th>
+        <th>Ad Listing Type</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ads.each do |ad| %>
+        <tr>
+          <td><%= ad.property_name %></td>
+          <td><%= ad.price %></td>
+          <td><%= ad.ad_type %></td>
+          <td><%= link_to "Show", ad %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
+  <%= link_to "New ad listing", new_ad_path, :class => "btn btn-light form-control" %>
+</div>
