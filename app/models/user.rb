@@ -4,4 +4,5 @@ class User < ApplicationRecord
   validates :nric, uniqueness: true
   validates :email, uniqueness: true
   has_one :image, as: :source
+  has_many :ads, as: :source
 end

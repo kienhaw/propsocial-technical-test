@@ -5,4 +5,5 @@ class Agent < ApplicationRecord
   validates :email, uniqueness: true
   validates :ren_no, uniqueness: true
   has_many :images, as: :source
+  has_many :ads, as: :source
 end
