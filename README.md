@@ -14,6 +14,10 @@ Change directory to cloned repo and start the web server and run bundle install:
  $ cd cloned_app
 
  $ bundle install
+ 
+ $ rake db:create
+ 
+ $ rails db:migrate
 
  $ rails server
  
