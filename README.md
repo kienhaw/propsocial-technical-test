@@ -21,4 +21,5 @@ Run with --help or -h for options.
 
 Go to http://localhost:3000 and you'll see login page
 
-https://myfave.slack.com/archives/C01MB4N2VTM/p1626666909241900?thread_ts=1625632313.070400&cid=C01MB4N2VTM
+[Propsocial - RoR Developer Assessment.pdf](https://github.com/kienhaw/propsocial-technical-test/files/6838002/Propsocial.-.RoR.Developer.Assessment.pdf)
+
